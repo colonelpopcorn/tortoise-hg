@@ -1,4 +1,3 @@
-TortoiseHgView = require './tortoise-hg-view'
 {CompositeDisposable} = require 'atom'
 
 module.exports = TortoiseHg =

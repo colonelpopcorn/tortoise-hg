@@ -7,5 +7,11 @@
 
 # For more detailed documentation see
 # https://atom.io/docs/latest/behind-atom-keymaps-in-depth
-'atom-workspace':
-  'ctrl-alt-o': 'tortoise-hg:toggle'
+'atom-text-editor':
+  'alt-b': 'tortoise-hg:blameFromEditor'
+  'alt-b': 'tortoise-hg:commitFromEditor'
+  'alt-b': 'tortoise-hg:diffFromEditor'
+  'alt-b': 'tortoise-hg:logFromEditor'
+  'alt-b': 'tortoise-hg:revertFromEditor'
+  'alt-b': 'tortoise-hg:updateFromEditor'
+  'alt-w': 'tortoise-hg:openWorkbench'
