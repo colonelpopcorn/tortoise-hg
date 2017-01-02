@@ -1,0 +1,18 @@
+{
+  "name": "tortoise-hg",
+  "main": "./lib/tortoise-hg",
+  "version": "0.0.0",
+  "description": "A short description of your package",
+  "keywords": [
+  ],
+  "activationCommands": {
+    "atom-workspace": "tortoise-hg:toggle"
+  },
+  "repository": "https://github.com/atom/tortoise-hg",
+  "license": "MIT",
+  "engines": {
+    "atom": ">=1.0.0 <2.0.0"
+  },
+  "dependencies": {
+  }
+}
