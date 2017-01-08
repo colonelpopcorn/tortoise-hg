@@ -14,4 +14,4 @@
   'alt-b': 'tortoise-hg:logFromEditor'
   'alt-b': 'tortoise-hg:revertFromEditor'
   'alt-b': 'tortoise-hg:updateFromEditor'
-  'alt-w': 'tortoise-hg:openWorkbench'
+  'alt-w': 'tortoise-hg:openWorkbenchFromEditor'
