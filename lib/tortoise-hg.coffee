@@ -2,12 +2,9 @@
 path = require "path"
 fs = require "fs"
 
-###
-atomHg = require 'atom-hg'
-if !atomHg?
+if !atom.packages.isPackageLoaded("atom-hg")
   apd = require 'atom-package-dependencies'
   apd.install()
-###
 
 tortoiseHg = (args, cwd) ->
   spawn = require("child_process").spawn
@@ -67,7 +64,7 @@ blame = (currFile)->
   # there is a problem with tortoiseHg 1.9+ and passing the -1 as the endrev value
   #     the -1 is interpreted as another paramater
   #     quoting works from the command line (i.e. /endrev:"-1")
-  # args.push("/startrev:1", "/endrev:-1") if atom.config.get("tortoise-svn.tortoiseBlameAll")
+  # args.push("/startrev:1", "/endrev:-1") if atom.config.get("tortoise-hg.tortoiseBlameAll")
   # console.log "invoking tortoiseHg with args=", args
   tortoiseHg(args, cwd)
 

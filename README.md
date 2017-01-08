@@ -1,5 +1,12 @@
 # tortoise-hg package
 
-A short description of your package.
+A wrapper for some of the functions that come with tortoiseHg. Inspired and heavily copied from the jasonhwest tortoise-svn package found [here](https://github.com/jasonhwest/tortoise-svn).
 
-![A screenshot of your package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
+# Contributing
+
+* Fork it.
+* Checkout a feature branch.
+* Commit and push the feature branch.
+* Make a pull request.
+
+Special and large thanks goes to jasonhwest.
