@@ -2,7 +2,7 @@
   "name": "tortoise-hg",
   "main": "./lib/tortoise-hg",
   "version": "0.0.0",
-  "description": "A short description of your package",
+  "description": "An atom package for interacting with common tortoise-hg commands.",
   "keywords": [
   ],
   "activationCommands": {
