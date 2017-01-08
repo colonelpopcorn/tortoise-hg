@@ -1,10 +1,9 @@
 {
   "name": "tortoise-hg",
   "main": "./lib/tortoise-hg",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "An atom package for interacting with common tortoise-hg commands.",
-  "keywords": [
-  ],
+  "keywords": [],
   "activationCommands": {
     "atom-workspace": [
       "tortoise-hg:blameFromTreeView",
