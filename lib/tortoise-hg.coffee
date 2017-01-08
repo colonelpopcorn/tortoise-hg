@@ -2,22 +2,46 @@
 path = require "path"
 fs = require "fs"
 
+###
+atomHg = require 'atom-hg'
+if !atomHg?
+  apd = require 'atom-package-dependencies'
+  apd.install()
+###
+
 tortoiseHg = (args, cwd) ->
   spawn = require("child_process").spawn
   command = atom.config.get("tortoise-hg.tortoisePathForWindows") + "/thg.exe"
   options =
     cwd: cwd
 
-tProc = spawn(command, args, options)
+  tProc = spawn(command, args, options)
 
-tproc.stdout.on "data", (data) ->
-  console.log "stdout: " + data
+  tProc.stdout.on "data", (data) ->
+    console.log "stdout: " + data
 
-tproc.stderr.on "data", (data) ->
-  console.log "stderr: " + data
+  tProc.stderr.on "data", (data) ->
+    console.log "stderr: " + data
 
-tproc.on "close", (code) ->
-  console.log "child process exited with code " + code
+  tProc.on "close", (code) ->
+    console.log "child process exited with code " + code
+
+tortoiseHgWorkbench = (args, cwd) ->
+  spawn = require("child_process").spawn
+  command = atom.config.get("tortoise-hg.tortoisePathForWindows") + "/thgw.exe"
+  options =
+    cwd: cwd
+
+  tProc = spawn(command, args, options)
+
+  tProc.stdout.on "data", (data) ->
+    console.log "stdout: " + data
+
+  tProc.stderr.on "data", (data) ->
+    console.log "stderr: " + data
+
+  tProc.on "close", (code) ->
+    console.log "child process exited with code " + code
 
 resolveTreeSelection = ->
   if atom.packages.isPackageLoaded("tree-view")
@@ -33,12 +57,12 @@ resolveEditorFile = ->
 
 blame = (currFile)->
   stat = fs.statSync(currFile)
-  args =  [ "/command:blame" ]
+  args =  [ "blame" ]
   if stat.isFile()
-    args.push("/path:"+path.basename(currFile))
+    args.push(path.basename(currFile))
     cwd = path.dirname(currFile)
   else
-    args.push("/path:.")
+    args.push(".")
     cwd = currFile
   # there is a problem with tortoiseHg 1.9+ and passing the -1 as the endrev value
   #     the -1 is interpreted as another paramater
@@ -50,38 +74,38 @@ blame = (currFile)->
 commit = (currFile)->
   stat = fs.statSync(currFile)
   if stat.isFile()
-    tortoiseHg(["/command:commit", "/path:"+path.basename(currFile)], path.dirname(currFile))
+    tortoiseHg(["commit", path.basename(currFile)], path.dirname(currFile))
   else
-    tortoiseHg(["/command:commit", "/path:."], currFile)
+    tortoiseHg(["commit", "."], currFile)
 
 diff = (currFile)->
   stat = fs.statSync(currFile)
   if stat.isFile()
-    tortoiseHg(["/command:vdiff", "/path:"+path.basename(currFile)], path.dirname(currFile))
+    tortoiseHg(["vdiff", path.basename(currFile)], path.dirname(currFile))
   else
-    tortoiseHg(["/command:vdiff", "/path:."], currFile)
+    tortoiseHg(["vdiff", "."], currFile)
 #+
 log = (currFile)->
   stat = fs.statSync(currFile)
   if stat.isFile()
-    tortoiseHg(["/command:log","/path:"+path.basename(currFile)], path.dirname(currFile))
+    tortoiseHg(["log",path.basename(currFile)], path.dirname(currFile))
   else
-    tortoiseHg(["/command:log","/path:."], currFile)
+    tortoiseHg(["log","."], currFile)
 
 
 revert = (currFile)->
   stat = fs.statSync(currFile)
   if stat.isFile()
-    tortoiseHg(["/command:revert", "/path:"+path.basename(currFile)], path.dirname(currFile))
+    tortoiseHg(["revert", path.basename(currFile)], path.dirname(currFile))
   else
-    tortoiseHg(["/command:revert", "/path:."], currFile)
+    tortoiseHg(["revert", "."], currFile)
 
 update = (currFile)->
   stat = fs.statSync(currFile)
   if stat.isFile()
-    tortoiseHg(["/command:update", "/path:"+path.basename(currFile)], path.dirname(currFile))
+    tortoiseHg(["update", path.basename(currFile)], path.dirname(currFile))
   else
-    tortoiseHg(["/command:update", "/path:."], currFile)
+    tortoiseHg(["update", "."], currFile)
 
 ###
 May not work with thg
@@ -92,38 +116,42 @@ thgswitch = (currFile) ->
   else
     target = path.parse(currFile).dir
 
-  tortoiseHg(["/command:switch", "/path:"+target], target)
+  tortoiseHg(["switch", target], target)
 ###
 
 add = (currFile) ->
   stat = fs.statSync(currFile)
   if stat.isFile()
-    tortoiseHg(["/command:add", "/path:"+path.basename(currFile)], path.dirname(currFile))
+    tortoiseHg(["add", path.basename(currFile)], path.dirname(currFile))
   else
-    tortoiseHg(["/command:add", "/path:."], currFile)
+    tortoiseHg(["add", "."], currFile)
 
 rename = (currFile) ->
   stat = fs.statSync(currFile)
   if stat.isFile()
-    tortoiseHg(["/command:rename", "/path:"+path.basename(currFile)], path.dirname(currFile))
+    tortoiseHg(["rename", path.basename(currFile)], path.dirname(currFile))
   else
-    tortoiseHg(["/command:rename", "/path:."], currFile)
+    tortoiseHg(["rename", "."], currFile)
 
 lock = (currFile) ->
   stat = fs.statSync(currFile)
   if stat.isFile()
-    tortoiseHg(["/command:lock", "/path:"+path.basename(currFile)], path.dirname(currFile))
+    tortoiseHg(["lock", path.basename(currFile)], path.dirname(currFile))
   else
-    tortoiseHg(["/command:lock", "/path:."], currFile)
+    tortoiseHg(["lock", "."], currFile)
 ###
 May not work with thg
 unlock = (currFile) ->
   stat = fs.statSync(currFile)
   if stat.isFile()
-    tortoiseHg(["/command:unlock", "/path:"+path.basename(currFile)], path.dirname(currFile))
+    tortoiseHg(["unlock", path.basename(currFile)], path.dirname(currFile))
   else
-    tortoiseHg(["/command:unlock", "/path:."], currFile)
+    tortoiseHg(["unlock", "."], currFile)
 ###
+
+workbench = (currFile) ->
+  stat = fs.statSync(currFile)
+  tortoiseHgWorkbench(["-R", path.dirname(currFile)], path.dirname(currFile))
 
 module.exports = TortoiseHg =
   config:
@@ -161,7 +189,7 @@ module.exports = TortoiseHg =
     atom.commands.add "atom-workspace", "tortoise-hg:openWorkbenchFromTreeView": => @updateFromTreeView()
     atom.commands.add "atom-workspace", "tortoise-hg:openWorkbenchFromEditor": => @updateFromEditor()
 
-    atom.commands.add "atom-workspace", "tortoise-hg:switchFromTreeView": => @switchFromTreeView()
+    #atom.commands.add "atom-workspace", "tortoise-hg:switchFromTreeView": => @switchFromTreeView()
 
     atom.commands.add "atom-workspace", "tortoise-hg:addFromTreeView": => @addFromTreeView()
     atom.commands.add "atom-workspace", "tortoise-hg:addFromEditor": => @addFromEditor()
@@ -172,8 +200,13 @@ module.exports = TortoiseHg =
     atom.commands.add "atom-workspace", "tortoise-hg:lockFromTreeView": => @lockFromTreeView()
     atom.commands.add "atom-workspace", "tortoise-hg:lockFromEditor": => @lockFromEditor()
 
+    ###
     atom.commands.add "atom-workspace", "tortoise-hg:unlockFromTreeView": => @unlockFromTreeView()
     atom.commands.add "atom-workspace", "tortoise-hg:unlockFromEditor": => @unlockFromEditor()
+    ###
+
+    atom.commands.add "atom-workspace", "tortoise-hg:workbenchFromTreeView": => @workbenchFromTreeView()
+    atom.commands.add "atom-workspace", "tortoise-hg:workbenchFromEditor": => @workbenchFromEditor()
 
   blameFromTreeView: ->
     currFile = resolveTreeSelection()
@@ -225,7 +258,7 @@ module.exports = TortoiseHg =
 
   switchFromTreeView: ->
     currFile = resolveTreeSelection()
-    tsvnswitch(currFile) if currFile?
+    thgswitch(currFile) if currFile?
 
   addFromTreeView: ->
     currFile = resolveTreeSelection()
@@ -251,6 +284,16 @@ module.exports = TortoiseHg =
     currFile = resolveEditorFile()
     lock(currFile) if currFile?
 
+  workbenchFromTreeView: ->
+    currFile = resolveTreeSelection()
+    workbench(currFile) if currFile?
+
+  workbenchFromEditor: ->
+    currFile = resolveEditorFile()
+    workbench(currFile) if currFile?
+
+###
+May not work in thg
   unlockFromTreeView: ->
     currFile = resolveTreeSelection()
     unlock(currFile) if currFile?
@@ -258,3 +301,4 @@ module.exports = TortoiseHg =
   unlockFromEditor: ->
     currFile = resolveEditorFile()
     unlock(currFile) if currFile?
+###

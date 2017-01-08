@@ -6,13 +6,37 @@
   "keywords": [
   ],
   "activationCommands": {
-    "atom-workspace": "tortoise-hg:toggle"
+    "atom-workspace": [
+      "tortoise-hg:blameFromTreeView",
+      "tortoise-hg:blameFromEditor",
+      "tortoise-hg:commitFromTreeView",
+      "tortoise-hg:commitFromEditor",
+      "tortoise-hg:diffFromTreeView",
+      "tortoise-hg:diffFromEditor",
+      "tortoise-hg:logFromTreeView",
+      "tortoise-hg:logFromEditor",
+      "tortoise-hg:revertFromTreeView",
+      "tortoise-hg:revertFromEditor",
+      "tortoise-hg:updateFromTreeView",
+      "tortoise-hg:updateFromEditor",
+      "tortoise-hg:addFromTreeView",
+      "tortoise-hg:addFromEditor",
+      "tortoise-hg:renameFromTreeView",
+      "tortoise-hg:renameFromEditor",
+      "tortoise-hg:lockFromTreeView",
+      "tortoise-hg:lockFromEditor",
+      "tortoise-hg:workbenchFromTreeView"
+    ]
   },
-  "repository": "https://github.com/atom/tortoise-hg",
+  "repository": "https://github.com/colonelpopcorn/tortoise-hg",
   "license": "MIT",
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
   "dependencies": {
+    "atom-package-dependencies": "latest"
+  },
+  "package-dependencies": {
+    "atom-hg": "latest"
   }
 }

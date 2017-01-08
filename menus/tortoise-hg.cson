@@ -1,55 +1,53 @@
 # See https://atom.io/docs/latest/creating-a-package#menus for more details
 "context-menu":
   "atom-text-editor": [
-    {
-      "label": "tortoise-hg"
-      "submenu": [
-        {
-          "label": "Add"
-          "command": "tortoise-hg:addFromEditor"
-        }
-        {
-          "label": "Blame"
-          "command": "tortoise-hg:blameFromEditor"
-        }
-        {
-          "label": "Commit"
-          "command": "tortoise-hg:commitFromEditor"
-        }
-        {
-          "label": "Diff"
-          "command": "tortoise-hg:diffFromEditor"
-        }
-        {
-          "label": "Lock"
-          "command": "tortoise-hg:lockFromEditor"
-        }
-        {
-          "label": "Log"
-          "command": "tortoise-hg:logFromEditor"
-        }
-        {
-          "label": "Rename"
-          "command": "tortoise-hg:renameFromEditor"
-        }
-        {
-          "label": "Revert"
-          "command": "tortoise-hg:revertFromEditor"
-        }
-        {
-          "label": "Unlock"
-          "command": "tortoise-hg:unlockFromEditor"
-        }
-        {
-          "label": "Update"
-          "command": "tortoise-hg:updateFromEditor"
-        }
-        {
-          "label": "Open Workbench"
-          "command": "tortoise-hg:openWorkbench"
-        }
-      ]
-    }
+    "label": "tortoise-hg"
+    "submenu": [
+      {
+        "label": "Add"
+        "command": "tortoise-hg:addFromEditor"
+      }
+      {
+        "label": "Blame"
+        "command": "tortoise-hg:blameFromEditor"
+      }
+      {
+        "label": "Commit"
+        "command": "tortoise-hg:commitFromEditor"
+      }
+      {
+        "label": "Diff"
+        "command": "tortoise-hg:diffFromEditor"
+      }
+      {
+        "label": "Lock"
+        "command": "tortoise-hg:lockFromEditor"
+      }
+      {
+        "label": "Log"
+        "command": "tortoise-hg:logFromEditor"
+      }
+      {
+        "label": "Rename"
+        "command": "tortoise-hg:renameFromEditor"
+      }
+      {
+        "label": "Revert"
+        "command": "tortoise-hg:revertFromEditor"
+      }
+      {
+        "label": "Unlock"
+        "command": "tortoise-hg:unlockFromEditor"
+      }
+      {
+        "label": "Update"
+        "command": "tortoise-hg:updateFromEditor"
+      }
+      {
+        "label": "Open Workbench..."
+        "command": "tortoise-hg:workbenchFromEditor"
+      }
+    ]
   ],
   ".tree-view": [
     {
@@ -100,8 +98,8 @@
           "command": "tortoise-hg:updateFromTreeView"
         }
         {
-          "label": "Open Workbench"
-          "command": "tortoise-hg:openWorkbench"
+          "label": "Open Workbench..."
+          "command": "tortoise-hg:workbenchFromTreeView"
         }
       ]
     }
@@ -153,8 +151,8 @@
           "command": "tortoise-hg:updateFromEditor"
         }
         {
-          "label": "Open Workbench"
-          "command": "tortoise-hg:openWorkbench"
+          "label": "Open Workbench..."
+          "command": "tortoise-hg:workbenchFromEditor"
         }
       ]
     ]

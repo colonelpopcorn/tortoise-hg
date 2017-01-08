@@ -8,10 +8,10 @@
 # For more detailed documentation see
 # https://atom.io/docs/latest/behind-atom-keymaps-in-depth
 'atom-text-editor':
-  'alt-b': 'tortoise-hg:blameFromEditor'
-  'alt-b': 'tortoise-hg:commitFromEditor'
-  'alt-b': 'tortoise-hg:diffFromEditor'
-  'alt-b': 'tortoise-hg:logFromEditor'
-  'alt-b': 'tortoise-hg:revertFromEditor'
-  'alt-b': 'tortoise-hg:updateFromEditor'
-  'alt-w': 'tortoise-hg:openWorkbenchFromEditor'
+  'ctrl-alt-b': 'tortoise-hg:blameFromEditor'
+  'ctrl-alt-c': 'tortoise-hg:commitFromEditor'
+  'ctrl-alt-d': 'tortoise-hg:diffFromEditor'
+  'ctrl-alt-l': 'tortoise-hg:logFromEditor'
+  'ctrl-alt-r': 'tortoise-hg:revertFromEditor'
+  'ctrl-alt-u': 'tortoise-hg:updateFromEditor'
+  'ctrl-alt-w': 'tortoise-hg:workbenchFromEditor'
