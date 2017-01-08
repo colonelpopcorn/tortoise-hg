@@ -10,3 +10,8 @@ A wrapper for some of the functions that come with tortoiseHg. Inspired and heav
 * Make a pull request.
 
 Special and large thanks goes to jasonhwest.
+
+# Roadmap
+
+* Add Linux support
+* Add Mac support
