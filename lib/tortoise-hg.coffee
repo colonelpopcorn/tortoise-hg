@@ -8,7 +8,7 @@ if !atom.packages.isPackageLoaded("atom-hg")
 
 tortoiseHg = (args, cwd) ->
   spawn = require("child_process").spawn
-  command = atom.config.get("tortoise-hg.tortoisePathForWindows") + "/thg.exe"
+  command = "thg"
   options =
     cwd: cwd
 
@@ -25,7 +25,7 @@ tortoiseHg = (args, cwd) ->
 
 tortoiseHgWorkbench = (args, cwd) ->
   spawn = require("child_process").spawn
-  command = atom.config.get("tortoise-hg.tortoisePathForWindows") + "/thgw.exe"
+  command = "thg"
   options =
     cwd: cwd
 
