@@ -42,10 +42,11 @@ tortoiseHgWorkbench = (args, cwd) ->
 
 resolveTreeSelection = ->
   if atom.packages.isPackageLoaded("tree-view")
-    treeView = atom.packages.getLoadedPackage("tree-view")
-    treeView = require(treeView.mainModulePath)
-    serialView = treeView.serialize()
-    serialView.selectedPath
+    treeViewPackage = atom.packages.getLoadedPackage("tree-view")
+    treeViewPackage = require(treeViewPackage.mainModulePath)
+    treeView = treeViewPackage.treeView
+    console.log(treeView.selectedPath)
+    treeView.selectedPath
 
 resolveEditorFile = ->
   editor = atom.workspace.getActivePaneItem()
