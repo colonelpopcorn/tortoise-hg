@@ -1,7 +1,7 @@
 {
   "name": "tortoise-hg",
   "main": "./lib/tortoise-hg",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "An atom package for interacting with common tortoise-hg commands.",
   "keywords": [],
   "activationCommands": {
